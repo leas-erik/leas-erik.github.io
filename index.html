@@ -280,8 +280,8 @@ footer a{color:#B8C0CC}
       <div class="stats">
         <div class="stat"><b>32</b><span>testes no auditor de arquivos sensíveis, gerado com IA</span></div>
         <div class="stat"><b>3</b><span>processos de avaliação comparados: NFDIxCS, USENIX e ACM</span></div>
-        <div class="stat"><b>4</b><span>pareceres de LLM sobre o mesmo artefato do SBRC 2026</span></div>
-        <div class="stat"><b>1</b><span>erro real no artefato, apontado por só uma das LLMs</span></div>
+        <div class="stat"><b>8</b><span>configurações de LLM, de três provedores, avaliando o mesmo artefato</span></div>
+        <div class="stat"><b>17</b><span>defeitos reais no artefato, achados pelas LLMs e conferidos por nós</span></div>
       </div>
     </div>
   </div>
@@ -422,34 +422,49 @@ footer a{color:#B8C0CC}
 <section id="llms" class="leas">
   <div class="wrap">
     <p class="eyebrow"><span class="ev-tag">E6</span>Tarefas 7 e 8 · LLMs como avaliadoras</p>
-    <h2>Quatro pareceres, os mesmos selos, profundidades diferentes.</h2>
-    <p class="lede">Artefato: <i>Extensão pós-quântica híbrida para o protocolo Matrix</i> (SBRC 2026, commit 53d46b1). Cada LLM recebeu as instruções oficiais do evento e fez duas etapas: análise do repositório e execução. Na Tarefa 8 variamos o esforço de raciocínio e a versão do modelo.</p>
+    <h2>O veredito é robusto. A avaliação que o sustenta, não.</h2>
+    <p class="lede">Artefato: <i>Extensão pós-quântica híbrida para o protocolo Matrix</i> (SBRC 2026, commit 53d46b1), que recebeu os selos D, F, S e R. Oito configurações de três provedores seguiram as instruções oficiais em duas etapas: leitura do repositório e execução. Na Tarefa 8 variamos a versão do modelo e o esforço de raciocínio.</p>
+    <div class="grid3">
+      <div class="card"><div class="big" style="color:var(--blue-l)">18 de 18</div><h3>decisões iguais ao comitê na T8</h3><p>Na T7 foram 8 de 12: o GPT-5.6 Luna negou os selos porque não conseguiu executar sem rede.</p></div>
+      <div class="card"><div class="big" style="color:var(--blue-l)">17</div><h3>defeitos reais no artefato</h3><p>Achados pelas LLMs e conferidos por nós no repositório, arquivo e linha.</p></div>
+      <div class="card"><div class="big" style="color:var(--blue-l)">0 → 9</div><h3>trocar a versão pesou mais que o esforço</h3><p>Gemini 3.8 Flash para Gemini 4 Argon, ambos em esforço baixo. Subir o esforço do 3.8 não achou nada novo.</p></div>
+    </div>
     <div class="grid2">
       <div class="card">
-        <h3>Tamanho do parecer, em palavras</h3>
+        <h3>Defeitos reais encontrados, por configuração</h3>
         <div class="bars">
-          <div class="bar"><span>GPT-OSS 120B · médio</span><div class="t"><i data-w="1345" data-max="6010"></i></div><b>1.345</b></div>
-          <div class="bar"><span>Gemini 3.8 Flash · baixo</span><div class="t"><i data-w="2704" data-max="6010"></i></div><b>2.704</b></div>
-          <div class="bar"><span>Gemini 3.8 Flash · alto</span><div class="t"><i data-w="4015" data-max="6010"></i></div><b>4.015</b></div>
-          <div class="bar"><span>Gemini 4 Argon · baixo</span><div class="t"><i data-w="6010" data-max="6010"></i></div><b>6.010</b></div>
+          <div class="bar"><span>Claude Opus 5.5 · alto (T7)</span><div class="t"><i data-w="11" data-max="11"></i></div><b>11</b></div>
+          <div class="bar"><span>Claude Fable 5.1 · médio (T8)</span><div class="t"><i data-w="10" data-max="11"></i></div><b>10</b></div>
+          <div class="bar"><span>Gemini 4 Argon · baixo (T8)</span><div class="t"><i data-w="9" data-max="11"></i></div><b>9</b></div>
+          <div class="bar"><span>GPT-5.6 Luna (T7)</span><div class="t"><i data-w="2" data-max="11"></i></div><b>2</b></div>
+          <div class="bar"><span>Gemini 3.8 Flash · padrão (T7)</span><div class="t"><i data-w="1" data-max="11"></i></div><b>1</b></div>
+          <div class="bar"><span>Gemini 3.8 Flash · alto (T8)</span><div class="t"><i data-w="1" data-max="11"></i></div><b>1</b></div>
+          <div class="bar"><span>Gemini 3.8 Flash · baixo (T8)</span><div class="t"><i class="base" data-w="0.15" data-max="11"></i></div><b>0</b></div>
+          <div class="bar"><span>GPT-OSS 120B · médio (T8)</span><div class="t"><i class="base" data-w="0.15" data-max="11"></i></div><b>0</b></div>
         </div>
-        <p class="src" style="color:#8A93A3">tamanho não é qualidade: é só quanto cada um escreveu</p>
+        <p class="src" style="color:#8A93A3">catálogo D1–D11 (T7) e N1–N6 (T8), cada um verificado no commit 53d46b1</p>
       </div>
       <div class="card">
         <table class="tbl">
-          <tr><th>Modelo</th><th>Selo F</th><th>Selo R</th><th>Executou?</th></tr>
-          <tr><td>GPT-OSS 120B</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td class="na">não</td></tr>
-          <tr><td>Gemini 3.8 Flash baixo</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>sim</td></tr>
-          <tr><td>Gemini 3.8 Flash alto</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>sim</td></tr>
-          <tr><td>Gemini 4 Argon baixo <span class="flag">achou erro</span></td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>sim</td></tr>
+          <tr><th>Configuração</th><th>F</th><th>R</th><th>Execução</th></tr>
+          <tr><td>Opus 5.5 alto · T7</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>completa, Ubuntu</td></tr>
+          <tr><td>Fable 5.1 médio · T8</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>completa, contêiner limpo</td></tr>
+          <tr><td>Gemini 3.8 padrão · T7</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>reduzida, Windows</td></tr>
+          <tr><td>Gemini 3.8 baixo · T8</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td class="na">nenhuma nova</td></tr>
+          <tr><td>Gemini 3.8 alto · T8</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>só teste mínimo</td></tr>
+          <tr><td>Gemini 4 Argon baixo · T8</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>só teste mínimo</td></tr>
+          <tr><td>GPT-5.6 Luna · T7</td><td style="color:#FFB4A8;font-weight:700">negar</td><td style="color:#FFB4A8;font-weight:700">negar</td><td class="na">sem rede</td></tr>
+          <tr><td>GPT-OSS 120B médio · T8</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td class="na">não tentou</td></tr>
         </table>
       </div>
     </div>
-    <div class="grid2">
-      <div class="card"><p class="eyebrow" style="margin-bottom:10px">O README manda procurar</p><p style="font-family:var(--mono);color:#F1F5F9;font-size:14.5px;overflow-wrap:anywhere">results/resultados_experiment_&lt;timestamp&gt;.csv</p><p class="src" style="color:#8A93A3">README.md · linha 385</p></div>
-      <div class="card"><p class="eyebrow" style="margin-bottom:10px">O código grava</p><p style="font-family:var(--mono);color:#F1F5F9;font-size:14.5px;overflow-wrap:anywhere">results/user_profile_runs_&lt;timestamp&gt;_&lt;política&gt;.csv</p><p class="src" style="color:#8A93A3">src/main.rs · linha 146</p></div>
+    <div class="grid3">
+      <div class="card"><p class="eyebrow" style="margin-bottom:10px">Acertar o selo não basta</p><p>Quase todas acertam o gabarito, então o selo não separa uma avaliação boa de uma ruim. O que separa é a evidência: arquivo, linha e execução.</p></div>
+      <div class="card"><p class="eyebrow" style="margin-bottom:10px">Modelo melhor não é melhor em tudo</p><p>O Fable 5.1 achou 3 defeitos que o Opus 5.5 não viu, e deixou passar 4 que o Opus achou.</p></div>
+      <div class="card"><p class="eyebrow" style="margin-bottom:10px">O ambiente contamina</p><p>As rodadas do Gemini rodaram na pasta da T7 e duas apresentaram como seus os arquivos gerados lá. A única execução totalmente verificável foi a do contêiner limpo.</p></div>
     </div>
-    <p style="color:#B8C0CC;margin-top:18px;max-width:800px">Só o Gemini 4 Argon notou a divergência, e ela existe: conferimos no repositório. A lição vale para qualquer parecer de IA: cada “arquivo, linha” citado precisa ser aberto e checado.</p>
+    <p style="color:#B8C0CC;margin-top:18px;max-width:820px">Exemplo de defeito real: o README manda procurar <code>results/resultados_experiment_*.csv</code> (linha 385), mas o código grava <code>results/user_profile_runs_*.csv</code> (<code>main.rs</code>, linha 146). Opus, Luna, Fable e Argon apontaram; Gemini 3.8 Flash e GPT-OSS, não.</p>
+    <div class="btns" style="margin-top:22px"><a class="btn p" href="assets/entregas/t8-relatorio-robustez-llms.pdf" target="_blank" rel="noopener">Relatório completo da Tarefa 8 (PDF, 24 páginas) ↗</a></div>
   </div>
 </section>
 
@@ -471,12 +486,12 @@ footer a{color:#B8C0CC}
         <div class="col ok"><b>Entregue</b>Comparação de três processos com fluxogramas.</div></div>
       <div class="ev"><div class="d">28/09</div>
         <div class="col off"><b>—</b>Início da tarefa 7.</div>
-        <div class="col ok"><b>Feito</b>Artefato do SBRC 2026 escolhido, clonado e compilado.</div></div>
+        <div class="col ok"><b>Feito</b>T7: Claude Opus 5.5, Gemini 3.8 Flash e GPT-5.6 Luna; 8 de 12 decisões iguais ao comitê.</div></div>
       <div class="ev"><div class="d">02/11</div>
         <div class="col off"><b>—</b>Tarefa 8: variar esforço e versão.</div>
-        <div class="col ok"><b>Feito</b>Quatro pareceres e novas execuções do teste mínimo.</div></div>
+        <div class="col ok"><b>Entregue</b>Relatório da T8: cinco configurações, 18 de 18 decisões iguais ao comitê e o catálogo de defeitos.</div></div>
       <div class="ev"><div class="d">próximo</div>
-        <div class="col wait"><b>Em aberto</b>Terceiro provedor, tabela T7 × T8 completa e as correções do GitExpert Check.</div>
+        <div class="col wait"><b>Em aberto</b>Rodar cada configuração em pasta limpa, com repetições, e as correções do GitExpert Check.</div>
         <div class="col off"><b>—</b>Entra aqui quando sair.</div></div>
     </div>
   </div>
@@ -488,9 +503,9 @@ footer a{color:#B8C0CC}
     <p class="eyebrow"><span class="ev-tag">E8</span>Rigor</p>
     <h2>O que sustentamos, e o que ainda não.</h2>
     <div class="grid2">
-      <div class="card"><h3>Dois provedores, não três</h3><p>A tarefa 7 pede três provedores. Até agora: OpenAI (GPT-OSS) e Google (Gemini). Falta o terceiro.</p></div>
-      <div class="card"><h3>Um artefato só</h3><p>Todas as conclusões sobre as LLMs vêm de um único artefato. Um caso que não recebeu todos os selos diria mais.</p></div>
-      <div class="card"><h3>Selos oficiais não confirmados</h3><p>O README declara os selos D, F, S e R. Ainda não achamos a lista oficial de selos concedidos para comparar.</p></div>
+      <div class="card"><h3>Uma rodada por configuração</h3><p>Sem repetições, não dá para separar o efeito da configuração da variação natural de cada modelo.</p></div>
+      <div class="card"><h3>Um artefato só</h3><p>Todas as conclusões vêm de um artefato que recebeu todos os selos. Um caso negativo diria mais.</p></div>
+      <div class="card"><h3>Ambiente reaproveitado</h3><p>As rodadas do Gemini usaram a pasta da T7. Na Anthropic, versão e esforço mudaram juntos. A OpenAI não executou o artefato.</p></div>
       <div class="card"><h3>Sem comparação externa</h3><p>O GitExpert Check ainda não foi medido contra ferramentas como gitleaks e TruffleHog.</p></div>
     </div>
   </div>
@@ -507,8 +522,8 @@ footer a{color:#B8C0CC}
       <div class="dv"><span class="dcode">T2 · set</span><h3>Community Expectations for Research Artifacts</h3><p>ICSE 2020: o que comitês e autores esperam de um artefato.</p><div class="k"><span>apresentado em 21/09</span></div></div>
       <div class="dv"><span class="dcode">T3 · set</span><h3>GitExpert Check</h3><p>Código, testes, README e o relato de como a IA foi usada.</p><div class="k"><a href="https://github.com/Erik-Fontella/git-exposure-check" target="_blank" rel="noopener">repositório ↗</a><a href="https://github.com/Erik-Fontella/git-exposure-check/blob/main/relato.txt" target="_blank" rel="noopener">relato ↗</a></div></div>
       <div class="dv"><span class="stamp">entregue</span><span class="dcode">T6 · 25/09</span><h3>Três processos comparados</h3><p>NFDIxCS, USENIX e ACM, com fluxogramas e tabela.</p><div class="k"><a href="assets/entregas/t6-comparacao-processos.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
-      <div class="dv"><span class="dcode">T7 e T8 · nov</span><h3>Protocolo e pareceres das LLMs</h3><p>Configuração do experimento, prompt da etapa 1 e os quatro pareceres.</p><div class="k"><a href="assets/entregas/t8-protocolo.md" target="_blank" rel="noopener">protocolo</a><a href="assets/entregas/t8-prompt-etapa1.md" target="_blank" rel="noopener">prompt</a><a href="assets/entregas/t8-avaliacoes.zip">pareceres .zip</a></div></div>
-      <div class="dv"><span class="dcode">T8 · em aberto</span><h3>Tabela T7 × T8</h3><p>A comparação entre configurações, ainda sendo preenchida.</p><div class="k"><a href="assets/entregas/t8-tabela-t7-t8.md" target="_blank" rel="noopener">rascunho</a></div></div>
+      <div class="dv"><span class="dcode">T8 · material bruto</span><h3>Protocolo e pareceres do Gemini e do GPT</h3><p>Configuração do experimento, prompt da etapa 1 e os quatro pareceres.</p><div class="k"><a href="assets/entregas/t8-protocolo.md" target="_blank" rel="noopener">protocolo</a><a href="assets/entregas/t8-prompt-etapa1.md" target="_blank" rel="noopener">prompt</a><a href="assets/entregas/t8-avaliacoes.zip">pareceres .zip</a></div></div>
+      <div class="dv"><span class="stamp">entregue</span><span class="dcode">T8 · nov</span><h3>Relatório de robustez das LLMs</h3><p>Versão do modelo × esforço, tabela T7 × T8 × selos oficiais e verificação de cada evidência.</p><div class="k"><a href="assets/entregas/t8-relatorio-robustez-llms.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
     </div>
   </div>
 </section>
