@@ -267,10 +267,7 @@ footer a{color:#B8C0CC}
           <!-- Quando o vídeo estiver pronto: troque o bloco .ph por
                <video src="assets/leas.mp4" controls playsinline poster="assets/poster.jpg"></video>
                ou um <iframe> do YouTube. -->
-          <div class="ph">
-            <div class="play"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div>
-            <p><b style="color:#F1F5F9">Vídeo de 2 a 3 minutos</b><br>em produção</p>
-          </div>
+          <video controls playsinline preload="metadata" poster="assets/leas-poster.jpg"><source src="assets/leas.mp4" type="video/mp4"><track kind="captions" src="assets/leas.pt-BR.vtt" srclang="pt-BR" label="Português"></video>
         </div>
         <div class="btns">
           <a class="btn p" href="#gitexpert">Ver o GitExpert Check rodando</a>
@@ -385,14 +382,14 @@ footer a{color:#B8C0CC}
   <div class="wrap">
     <p class="eyebrow"><span class="ev-tag">E4</span>Avaliando o nosso próprio artefato</p>
     <h2>Rodamos o GitExpert Check como um avaliador rodaria.</h2>
-    <p class="lede">Clone limpo do GitHub, Python 3.13, seguindo o README. Duas coisas que um comitê de artefatos pegaria:</p>
+    <p class="lede">Clone limpo do GitHub, Python 3.13, seguindo o README. Duas coisas que um comitê de artefatos pegaria, e que já corrigimos:</p>
     <div class="grid2">
       <div class="card lim-card"><div class="big" style="font-size:30px">Python 3.9+?</div><h3>O README promete, o código não cumpre</h3><p><code>scanner.py</code> usa <code>Iterable</code> sem importar. No 3.14 passa (as anotações são avaliadas depois); no 3.13 os testes nem começam. Correção: uma linha.</p>
 <div class="code"><span class="r">- from typing import Dict, List, Optional, Set</span>
 <span class="s">+ from typing import Dict, Iterable, List, Optional, Set</span></div></div>
       <div class="card lim-card"><div class="big" style="font-size:30px">“seguro”</div><h3>O repositório de teste chegou incompleto</h3><p>A pasta <code>tests/fixtures/test_repo</code> no GitHub não traz o <code>.env</code>, a <code>server.key</code> nem o <code>app.sqlite3</code> falsos. Quem roda a demonstração de um comando vê “nenhum arquivo sensível”, e não os três alertas.</p></div>
     </div>
-    <p class="src">Verificado em 23/11/2026. Os dois pontos entram na próxima versão do repositório.</p>
+    <p style="margin-top:22px;font-size:17px;max-width:820px"><b style="color:var(--blue-d)">Corrigido na versão 1.0.1 (23/11/2026):</b> o import, os arquivos falsos de teste e testes automáticos no GitHub Actions em Python 3.9, 3.10, 3.11, 3.12, 3.13 e 3.14.</p>
   </div>
 </section>
 
@@ -491,8 +488,8 @@ footer a{color:#B8C0CC}
         <div class="col off"><b>—</b>Tarefa 8: variar esforço e versão.</div>
         <div class="col ok"><b>Entregue</b>Relatório da T8: cinco configurações, 18 de 18 decisões iguais ao comitê e o catálogo de defeitos.</div></div>
       <div class="ev"><div class="d">próximo</div>
-        <div class="col wait"><b>Em aberto</b>Rodar cada configuração em pasta limpa, com repetições, e as correções do GitExpert Check.</div>
-        <div class="col off"><b>—</b>Entra aqui quando sair.</div></div>
+        <div class="col wait"><b>Em aberto</b>Rodar cada configuração em pasta limpa e com repetições.</div>
+        <div class="col ok"><b>Entregue em 23/11</b>GitExpert Check 1.0.1, com testes automáticos em Python 3.9 a 3.14, e o vídeo deste site.</div></div>
     </div>
   </div>
 </section>
