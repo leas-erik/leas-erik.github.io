@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio LEAS 2026.2 — Erik Fontella e André Medeiros</title>
+<meta name="description" content="Avaliação de artefatos de software na LEAS 2026.2 (Unipampa): processos de conferências, o auditor GitExpert Check gerado com IA e LLMs como avaliadoras de um artefato do SBRC 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14201E; --muted:#4A5552; --soft:#7E8783; --line:#E4DFD3;
+  --page:#F3F1EA; --surface:#FFFDF8; --night:#111113; --night2:#1B1B1F; --nightline:#2C2C33;
+  --blue:#0E9F8E; --blue-d:#0B7A6E; --blue-l:#2DD4BF; --cyan:#7DD3FC; --amber:#E8A33D; --green:#2E9E5B;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-d)}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font:600 13px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-d);margin:0 0 14px}
+h1,h2,h3{letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(30px,4.2vw,46px);line-height:1.08;font-weight:800;max-width:820px}
+h3{font-size:20px;line-height:1.25;font-weight:700}
+p{margin:0}
+.lede{font-size:19px;color:var(--muted);max-width:720px;margin-top:16px}
+section{padding:96px 0}
+section + section{border-top:1px solid var(--line)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(17,17,19,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--nightline)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:60px;overflow-x:auto;white-space:nowrap}
+nav .brand{display:flex;align-items:center;gap:10px;color:#F8FAFC;font-weight:800;text-decoration:none;margin-right:auto}
+nav .brand img{width:22px;height:auto}
+nav a.l{color:#B8C0CC;text-decoration:none;font-size:14px;font-weight:600}
+nav a.l:hover{color:#fff}
+nav a.cta{background:var(--blue);color:#fff;text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px}
+
+/* hero */
+.hero{background:var(--night);color:#F1F5F9;padding:88px 0 96px;border:0;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:auto -10% -40% 40%;height:520px;background:radial-gradient(closest-side,rgba(14,159,142,.30),transparent);pointer-events:none}
+.hero .eyebrow{color:var(--blue-l)}
+.hero h1{font-size:clamp(44px,7vw,84px);line-height:1;font-weight:800;letter-spacing:-.035em;max-width:900px}
+.hero h1 span{color:var(--blue-l)}
+.hero .lede{color:#B8C0CC;max-width:700px;font-size:20px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;margin-top:44px}
+.video{aspect-ratio:16/9;border-radius:18px;background:linear-gradient(135deg,#1B1B1F,#16263a);border:1px solid var(--nightline);display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+.video video,.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .ph{padding:24px}
+.video .play{width:64px;height:64px;border-radius:50%;background:var(--blue);display:grid;place-items:center;margin:0 auto 14px}
+.video .ph p{color:#B8C0CC;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.stat{background:var(--night2);border:1px solid var(--nightline);border-radius:16px;padding:20px 22px}
+.stat b{display:block;font-size:46px;line-height:1;font-weight:800;letter-spacing:-.03em;color:#F8FAFC}
+.stat span{display:block;color:#B8C0CC;font-size:14.5px;margin-top:8px;line-height:1.4}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px}
+.btn.p{background:var(--blue);color:#fff}
+.btn.g{border:1px solid #3a3a44;color:#F1F5F9}
+
+/* cards */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+.card{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card .big{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--blue-d);margin-bottom:12px}
+.card p{color:var(--muted);font-size:15.5px;margin-top:8px}
+.src{font:500 12px/1.4 var(--mono);color:var(--soft);margin-top:12px}
+
+/* pipeline */
+.pipe{margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.pipe svg{width:100%;height:auto;display:block}
+.pipe text{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.flow-dot{offset-rotate:0deg;animation:travel 5.2s linear infinite}
+@keyframes travel{from{offset-distance:0%}to{offset-distance:100%}}
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+.fade-in.on{opacity:1;transform:none}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:14.5px;color:var(--muted)}
+.legend i{display:inline-block;width:22px;height:4px;border-radius:2px;vertical-align:middle;margin-right:8px}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-top:16px}
+details summary{cursor:pointer;padding:18px 22px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"+";font:700 22px/1 var(--mono);color:var(--blue-d)}
+details[open] summary:after{content:"−"}
+details .in{padding:0 22px 22px;color:var(--muted);font-size:15.5px}
+code,.code{font-family:var(--mono);font-size:13.5px}
+.code{background:var(--night);color:#E3E7EE;border-radius:14px;padding:18px 20px;overflow-x:auto;white-space:pre;line-height:1.6;margin-top:14px}
+.code .c{color:#8A93A3}.code .k{color:var(--blue-l)}.code .s{color:#9AD0A8}.code .r{color:#FF8A80}.code .y{color:#FFD27A}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.calc label{display:block;font-weight:700;font-size:14.5px;margin:0 0 6px}
+.calc .row{margin-bottom:18px}
+.calc select,.calc input[type=range]{width:100%}
+.calc select{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff}
+.calc .val{font:700 14px var(--mono);color:var(--blue-d);float:right}
+.out{background:var(--night);border-radius:18px;padding:26px;color:#F1F5F9;display:flex;flex-direction:column;justify-content:center}
+.out .n{font-size:64px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.out .u{color:#B8C0CC;margin-top:6px}
+.meter{height:12px;border-radius:999px;background:#2C2C33;margin-top:22px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));width:10%;transition:width .4s ease}
+.out .f{font:500 13px/1.6 var(--mono);color:#8A93A3;margin-top:16px}
+
+/* bars */
+.bars{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:230px 1fr 60px;gap:14px;align-items:center;font-size:15px}
+.bar .t{height:26px;border-radius:8px;background:#E3F4F1;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--blue);border-radius:8px;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.bar .t i.base{background:#9CCFC7}
+.bar b{font:700 14px var(--mono);text-align:right}
+.split{display:grid;grid-template-columns:1fr 1.25fr;gap:24px;margin-top:40px;align-items:start}
+.path{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:16px}
+.path .big{font-size:44px;font-weight:800;color:var(--blue-d);line-height:1;letter-spacing:-.03em}
+
+/* side by side */
+.sbs{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.slot{border:2px dashed #C9D3E0;border-radius:18px;padding:22px;background:#FAFBFD}
+.slot h3{font-size:17px}
+.slot .m{font:600 12.5px var(--mono);color:var(--soft);margin-top:4px}
+.slot ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.status{display:inline-flex;align-items:center;gap:8px;font:700 12.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#8A4B00;background:#FFF3DF;border:1px solid #F3D3A1;border-radius:999px;padding:6px 12px;margin-top:22px}
+
+/* timeline */
+.tl{margin-top:44px;position:relative}
+.tl:before{content:"";position:absolute;left:118px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.ev{display:grid;grid-template-columns:100px 1fr 1fr;gap:36px;position:relative;padding:0 0 30px}
+.ev .d{font:700 14px var(--mono);color:var(--blue-d);text-align:right;padding-top:2px}
+.ev:after{content:"";position:absolute;left:112px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--blue)}
+.ev .col{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px;color:var(--muted)}
+.ev .col b{display:block;color:var(--ink);font-size:12px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.ev .col.ok b{color:var(--green)}
+.ev .col.wait b{color:#8A4B00}
+.ev .col.off{background:transparent;border-style:dashed}
+.tlhead{display:grid;grid-template-columns:100px 1fr 1fr;gap:36px;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-top:36px}
+.tlhead span:first-child{visibility:hidden}
+
+/* limits */
+.lim .card{border-left:4px solid var(--amber)}
+
+/* LEAS */
+.leas{background:var(--night);color:#F1F5F9;border:0}
+.leas .eyebrow{color:var(--blue-l)}
+.leas h2{color:#F8FAFC}
+.leas .lede{color:#B8C0CC}
+.leas .card{background:var(--night2);border-color:var(--nightline)}
+.leas .card p{color:#B8C0CC}
+.leas h3{color:#F8FAFC}
+.term{background:#0B0B0D;border:1px solid var(--nightline);border-radius:16px;overflow:hidden;margin-top:40px}
+.term .bar2{display:flex;gap:7px;padding:12px 14px;border-bottom:1px solid var(--nightline)}
+.term .bar2 i{width:11px;height:11px;border-radius:50%;background:#3a3a44}
+.term pre{margin:0;padding:20px 22px;font:13.5px/1.65 var(--mono);color:#D6DBE3;overflow-x:auto}
+.term .r{color:#FF8A80;font-weight:700}.term .y{color:#FFD27A;font-weight:700}.term .g{color:#9AD0A8}.term .b{color:var(--blue-l)}.term .m{color:#8A93A3}
+.proc{display:grid;gap:14px;margin-top:40px}
+.proc .p{background:var(--night2);border:1px solid var(--nightline);border-radius:16px;padding:18px 20px}
+.proc .p h3{font-size:16px;margin-bottom:12px}
+.steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.steps span{font-size:13.5px;background:#25252B;border:1px solid #33333B;color:#D6DBE3;border-radius:999px;padding:6px 12px}
+.steps em{color:#5C6473;font-style:normal}
+.steps span.hl{background:rgba(45,212,191,.14);border-color:rgba(45,212,191,.5);color:#CCF5EE}
+.leas details{background:var(--night2);border-color:var(--nightline)}
+.leas details summary{color:#F1F5F9}
+.leas details .in{color:#B8C0CC}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.figs figure{margin:0;background:#fff;border-radius:12px;padding:10px;max-height:520px;overflow-y:auto}
+.figs figcaption{font:600 12.5px var(--mono);color:#4A5568;padding:4px 2px 8px}
+.leas .bar .t{background:#25252B}
+.leas .bar b{color:#F1F5F9}
+.flag{white-space:nowrap;font:700 11.5px var(--mono);color:#0B2E12;background:#7FDCA2;border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+.tbl{width:100%;border-collapse:collapse;margin-top:18px;font-size:14.5px}
+.tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--nightline)}
+.tbl th{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8A93A3}
+.yes{color:#7FDCA2;font-weight:700}.na{color:#8A93A3}
+
+footer{background:#0B0B0D;color:#8A93A3;padding:48px 0;font-size:14.5px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer b{color:#F1F5F9;display:block;margin-bottom:8px}
+footer a{color:#B8C0CC}
+
+@media (max-width:900px){
+  .hero-grid,.calc,.split,.grid2{grid-template-columns:1fr}
+  .grid4{grid-template-columns:1fr 1fr}
+  .grid3,.sbs,.figs{grid-template-columns:1fr}
+  .tl:before,.ev:after{display:none}
+  .ev,.tlhead{grid-template-columns:1fr;gap:10px}
+  .ev .d{text-align:left}
+  .tlhead{display:none}
+  .bar{grid-template-columns:118px minmax(0,1fr) 46px;font-size:13.5px;gap:10px}
+  .tbl{font-size:13px}.tbl th,.tbl td{padding:8px 6px}
+  .split > *{min-width:0}
+  footer .wrap{grid-template-columns:1fr}
+  nav a.l{display:none}
+  .pipe{overflow-x:auto;padding:18px}
+  .pipe svg{min-width:760px}
+}
+@media (max-width:560px){
+  .grid4{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .flow-dot{animation:none}
+  .fade-in{opacity:1;transform:none;transition:none}
+  .bar .t i,.meter i{transition:none}
+}
+
+.proc.light .p{background:var(--surface);border-color:var(--line)}
+.proc.light .p h3{color:var(--ink)}
+.proc.light .steps span{background:#F4F6FA;border-color:var(--line);color:var(--ink)}
+.proc.light .steps span.hl{background:#E3F4F1;border-color:#9CCFC7;color:#0B4F47;font-weight:600}
+.proc.light .steps em{color:var(--soft)}
+.lim-card{border-left:4px solid var(--amber)}
+.leas .card .eyebrow{color:var(--blue-l)}
+
+/* identidade: selo de avaliação */
+.seal{position:absolute;right:4%;top:56px;width:250px;height:250px;opacity:.9;pointer-events:none}
+.seal .ring{transform-origin:125px 125px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .wrap{position:relative;z-index:1}
+.ev-tag{display:inline-grid;place-items:center;min-width:34px;height:22px;border:1.5px solid currentColor;border-radius:6px;margin-right:10px;font:700 11.5px var(--mono);transform:rotate(-4deg)}
+.stamp{display:inline-block;font:800 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:2px solid currentColor;border-radius:6px;padding:2px 8px;transform:rotate(-3deg)}
+/* entregas */
+.deliv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.dv{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative}
+.dv .dcode{font:700 12.5px var(--mono);color:var(--blue-d);letter-spacing:.06em}
+.dv h3{font-size:17px}
+.dv p{color:var(--muted);font-size:14.5px}
+.dv .k{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:8px}
+.dv .k a,.dv .k span{font:700 12.5px var(--mono);text-decoration:none;border-radius:8px;padding:6px 10px;background:#E3F4F1;color:var(--blue-d)}
+.dv .k span{background:#EFECE3;color:var(--soft)}
+.dv .stamp{position:absolute;right:16px;top:16px;color:var(--blue-d);opacity:.85}
+@media (max-width:900px){.seal{display:none}.deliv{grid-template-columns:1fr}.leas .card{overflow-x:auto}.tbl .stamp{font-size:10px;padding:1px 5px;letter-spacing:.02em}}
+@media (prefers-reduced-motion:reduce){.seal .ring{animation:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#topo"><span style="display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--blue);color:#fff;font:800 12px var(--mono)">A</span>Portfólio <span style="color:#8A93A3;font-weight:600">· LEAS</span></a>
+    <a class="l" href="#conferencias">Conferências</a>
+    <a class="l" href="#gitexpert">GitExpert Check</a>
+    <a class="l" href="#processos">Processos</a>
+    <a class="l" href="#llms">LLMs avaliadoras</a>
+    <a class="l" href="#linha">Linha do tempo</a>
+    <a class="l" href="#entregas">Entregas</a>
+    <a class="cta" href="https://github.com/Erik-Fontella/git-exposure-check" target="_blank" rel="noopener">Código</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="topo">
+  <svg class="seal" viewBox="0 0 250 250" aria-hidden="true">
+    <defs><path id="circ" d="M125 125 m-92 0 a92 92 0 1 1 184 0 a92 92 0 1 1 -184 0"/></defs>
+    <g class="ring"><circle cx="125" cy="125" r="112" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-dasharray="3 6"/>
+    <text font-family="JetBrains Mono, monospace" font-size="15.5" font-weight="700" letter-spacing="4" fill="#2DD4BF"><textPath href="#circ">ARTEFATO AVALIADO · LEAS 2026.2 · UNIPAMPA ·</textPath></text></g>
+    <circle cx="125" cy="125" r="70" fill="rgba(45,212,191,.08)" stroke="#2DD4BF" stroke-width="3"/>
+    <path d="M95 127 l20 20 l42 -46" fill="none" stroke="#2DD4BF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow">LEAS 2026.2 · Unipampa · Erik Fontella e André Medeiros</p>
+    <h1>Artefato bom é o que <span>outra pessoa consegue rodar.</span></h1>
+    <p class="lede">Um semestre avaliando artefatos de software: estudamos como as conferências avaliam, construímos ferramentas de segurança com IA e colocamos LLMs no papel de avaliadoras. Inclusive do nosso próprio código.</p>
+    <div class="hero-grid">
+      <div>
+        <div class="video" id="video">
+          <!-- Quando o vídeo estiver pronto: troque o bloco .ph por
+               <video src="assets/leas.mp4" controls playsinline poster="assets/poster.jpg"></video>
+               ou um <iframe> do YouTube. -->
+          <div class="ph">
+            <div class="play"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div>
+            <p><b style="color:#F1F5F9">Vídeo de 2 a 3 minutos</b><br>em produção</p>
+          </div>
+        </div>
+        <div class="btns">
+          <a class="btn p" href="#gitexpert">Ver o GitExpert Check rodando</a>
+          <a class="btn g" href="#llms">LLMs como avaliadoras</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>32</b><span>testes no auditor de arquivos sensíveis, gerado com IA</span></div>
+        <div class="stat"><b>3</b><span>processos de avaliação comparados: NFDIxCS, USENIX e ACM</span></div>
+        <div class="stat"><b>4</b><span>pareceres de LLM sobre o mesmo artefato do SBRC 2026</span></div>
+        <div class="stat"><b>1</b><span>erro real no artefato, apontado por só uma das LLMs</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEMA -->
+<section id="problema">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E1</span>O problema</p>
+    <h2>Todo artigo promete que o código funciona. Pouca gente confere.</h2>
+    <div class="grid4">
+      <div class="card fade-in"><div class="big">?</div><h3>Critérios ambíguos</h3><p>Revisores procuram replicabilidade; quem usa o artefato quer reutilizá-lo. Cada um lê o selo de um jeito.</p></div>
+      <div class="card fade-in"><div class="big">horas</div><h3>Avaliar custa caro</h3><p>Instalar, compilar e rodar o código de outra pessoa ocupa o avaliador por horas, às vezes dias.</p></div>
+      <div class="card fade-in"><div class="big">.env</div><h3>Segredos vazam</h3><p>Chaves e senhas vão parar no Git por um <code>.gitignore</code> incompleto (CWE-200, OWASP A05).</p></div>
+      <div class="card fade-in"><div class="big">LLM?</div><h3>E se a IA avaliar?</h3><p>Ela segue as mesmas instruções dos avaliadores? Chega aos mesmos selos? Inventa evidência?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENCIAS -->
+<section id="conferencias">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E2</span>Tarefas 1 e 2 · o que as conferências esperam</p>
+    <h2>Selo não é opinião: é um processo.</h2>
+    <p class="lede">Estudamos o processo da NFDIxCS no ICSA 2024 e o artigo <i>Community Expectations for Research Artifacts</i> (ICSE 2020), que mostra onde avaliadores e autores discordam.</p>
+    <div class="split">
+      <div>
+        <div class="proc light" style="margin-top:0">
+          <div class="p"><h3>ICSA 2024 · NFDIxCS, numa instância do HotCRP</h3>
+            <div class="steps"><span>Setup e submissão</span><em>→</em><span class="hl">Bidding</span><em>→</em><span class="hl">Clarificação anônima</span><em>→</em><span>Decisão com selos</span></div>
+            <p style="color:var(--muted);font-size:15px;margin-top:14px">O código não fica no HotCRP: vai para um repositório de longo prazo, como o Zenodo. Os selos seguem os princípios FAIR.</p>
+          </div>
+        </div>
+        <details>
+          <summary>Os selos do ICSA 2024</summary>
+          <div class="in"><b>Functional</b>: roda sem erros críticos. <b>Reusable</b>: documentação para reuso. <b>Open Research Object</b>: arquivado publicamente. <b>Results Reproduced</b> e <b>Replicated</b>: os resultados do artigo foram obtidos de forma independente.</div>
+        </details>
+      </div>
+      <div class="card">
+        <h3>O que mais aparece nos critérios</h3>
+        <div class="bars">
+          <div class="bar"><span>Replicabilidade</span><div class="t"><i data-w="45" data-max="45"></i></div><b>45</b></div>
+          <div class="bar"><span>Documentação</span><div class="t"><i data-w="43" data-max="45"></i></div><b>43</b></div>
+          <div class="bar"><span>Instalação fácil</span><div class="t"><i data-w="37" data-max="45"></i></div><b>37</b></div>
+          <div class="bar"><span>Código que compila e roda</span><div class="t"><i data-w="29" data-max="45"></i></div><b>29</b></div>
+        </div>
+        <p class="src">ICSE 2020 · 79 chamadas de trabalhos (2011–2019) e cerca de 250 respostas de membros de comitês</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GITEXPERT -->
+<section id="gitexpert" class="leas">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E3</span>Tarefa 3 · criar um artefato de segurança com IA</p>
+    <h2>GitExpert Check: acha o segredo antes do <code style="font-size:.8em">git push</code>.</h2>
+    <p class="lede">Um repositório falso com um <code>.env</code> comitado, uma chave privada e um banco local fora do <code>.gitignore</code>. A ferramenta acha os três em 3 ms e diz o que fazer.</p>
+    <div class="term" aria-label="Saída do terminal do git-exposure-check">
+      <div class="bar2"><i></i><i></i><i></i></div>
+<pre><span class="m">$</span> python main.py demo_repo
+<span class="m">Arquivos varridos: 7 · Regras aplicadas: 7 · Tempo de varredura: 3.23 ms</span>
+
+<span class="r">1. [CRÍTICO - RASTREADO NO GIT] .env</span>
+   Ação: <span class="b">git rm --cached .env</span>, adicione .env ao .gitignore e revogue as credenciais.
+<span class="y">2. [ALERTA - NÃO IGNORADO] server.key</span>
+   Ação: adicione a regra <span class="b">*.key</span> ao .gitignore.
+<span class="y">3. [ALERTA - NÃO IGNORADO] app.sqlite3</span>
+   Ação: adicione a regra <span class="b">*.sqlite3</span> ao .gitignore.
+
+<span class="m">Rastreados no Git: 1 · Expostos no disco: 2 · Protegidos: 0</span>
+<span class="r">[FALHA] Foram encontrados 3 arquivo(s) sensíveis expostos ou rastreados!</span></pre>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="border-color:#5a4520">
+        <p class="eyebrow" style="color:#FFD27A;margin-bottom:10px">Não funcionou · pedido genérico</p>
+        <p style="color:#F1F5F9;font-style:italic">“Implemente o scanner para ler todos os arquivos e sugerir a regra de ignore.”</p>
+        <p>Para um <code>server.key</code>, a IA sugeria ignorar <code>*.pem</code>: pegava a primeira regra da lista. E os acentos quebravam no PowerShell.</p>
+      </div>
+      <div class="card" style="border-color:#1d5c55">
+        <p class="eyebrow" style="margin-bottom:10px">Funcionou · um pedido por módulo</p>
+        <p style="color:#F1F5F9;font-style:italic">“Crie rules.py com as regras e exceções seguras, como .env.example.” Depois: “Crie os testes e um repositório falso vulnerável.”</p>
+        <p>Regras, casamento de padrões, varredura e relatório separados. <b style="color:#F1F5F9">32 testes</b> rodando em menos de 0,2 s.</p>
+      </div>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="big" style="color:var(--blue-l)">4</div><h3>camadas</h3><p>Regras, casamento de padrões, varredura e relatório (CLI, JSON e Markdown).</p></div>
+      <div class="card"><div class="big" style="color:var(--blue-l)">0</div><h3>dependência de GitPython</h3><p>Só <code>subprocess</code>, com fallback para pasta local sem Git.</p></div>
+      <div class="card"><div class="big" style="color:var(--blue-l)">IA</div><h3>Antigravity + Gemini 3.8 Flash</h3><p>Código, README e revisão crítica. As decisões de estrutura ficaram com a gente.</p></div>
+    </div>
+    <details>
+      <summary>O outro artefato da tarefa: auditoria de senhas (André)</summary>
+      <div class="in">Serviço em JavaScript que mede a força da senha, verifica vazamentos no Have I Been Pwned por k-anonimato (só os cinco primeiros caracteres do hash saem da máquina) e guarda com bcrypt. A API externa fica atrás de uma interface, então os testes rodam sem rede. 23 testes e 6 endpoints. Gerado com GPT para refinar os pedidos e Claude para executar.</div>
+    </details>
+  </div>
+</section>
+
+<!-- PROPRIO ARTEFATO -->
+<section id="proprio">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E4</span>Avaliando o nosso próprio artefato</p>
+    <h2>Rodamos o GitExpert Check como um avaliador rodaria.</h2>
+    <p class="lede">Clone limpo do GitHub, Python 3.13, seguindo o README. Duas coisas que um comitê de artefatos pegaria:</p>
+    <div class="grid2">
+      <div class="card lim-card"><div class="big" style="font-size:30px">Python 3.9+?</div><h3>O README promete, o código não cumpre</h3><p><code>scanner.py</code> usa <code>Iterable</code> sem importar. No 3.14 passa (as anotações são avaliadas depois); no 3.13 os testes nem começam. Correção: uma linha.</p>
+<div class="code"><span class="r">- from typing import Dict, List, Optional, Set</span>
+<span class="s">+ from typing import Dict, Iterable, List, Optional, Set</span></div></div>
+      <div class="card lim-card"><div class="big" style="font-size:30px">“seguro”</div><h3>O repositório de teste chegou incompleto</h3><p>A pasta <code>tests/fixtures/test_repo</code> no GitHub não traz o <code>.env</code>, a <code>server.key</code> nem o <code>app.sqlite3</code> falsos. Quem roda a demonstração de um comando vê “nenhum arquivo sensível”, e não os três alertas.</p></div>
+    </div>
+    <p class="src">Verificado em 23/11/2026. Os dois pontos entram na próxima versão do repositório.</p>
+  </div>
+</section>
+
+<!-- PROCESSOS -->
+<section id="processos">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E5</span>Tarefa 6 · três processos de avaliação</p>
+    <h2>Preservar, executar ou chegar a consenso.</h2>
+    <p class="lede">Os três processos aceitam o mesmo tipo de artefato, mas cada um gasta o esforço numa etapa diferente (em destaque).</p>
+    <div class="proc light">
+      <div class="p"><h3>NFDIxCS / ICSA · foco em preservação</h3><div class="steps"><span>Submissão + metadados CFF</span><em>→</em><span class="hl">Auditoria FAIR</span><em>→</em><span>Containers OCI</span><em>→</em><span>Validação dos resultados</span><em>→</em><span class="hl">Arquivamento federado</span><em>→</em><span>Certificado FAIR</span></div></div>
+      <div class="p"><h3>USENIX · foco em execução</h3><div class="steps"><span>Paper + apêndice AE</span><em>→</em><span class="hl">Provisionamento (testbed)</span><em>→</em><span>Smoke test</span><em>→</em><span class="hl">Loop com autores (HotCRP)</span><em>→</em><span>Benchmarks completos</span><em>→</em><span>Badges + selo no PDF</span></div></div>
+      <div class="p"><h3>ACM · foco no consenso</h3><div class="steps"><span>Pacote do artefato</span><em>→</em><span>Kick-the-tires</span><em>→</em><span>Ajustes com autores</span><em>→</em><span class="hl">Avaliação holística</span><em>→</em><span class="hl">Consenso do comitê</span><em>→</em><span>Badges ACM</span></div></div>
+    </div>
+    <details>
+      <summary>Ver os fluxogramas originais</summary>
+      <div class="in"><div class="figs">
+        <figure><figcaption>NFDIxCS / ICSA</figcaption><img src="assets/t6-nfdixcs.webp" alt="Fluxograma do processo NFDIxCS/ICSA" loading="lazy"></figure>
+        <figure><figcaption>USENIX</figcaption><img src="assets/t6-usenix.webp" alt="Fluxograma do processo USENIX" loading="lazy"></figure>
+        <figure><figcaption>ACM (avaliação holística)</figcaption><img src="assets/t6-holistica.webp" alt="Fluxograma do processo ACM com fase holística" loading="lazy"></figure>
+      </div></div>
+    </details>
+  </div>
+</section>
+
+<!-- LLMS -->
+<section id="llms" class="leas">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E6</span>Tarefas 7 e 8 · LLMs como avaliadoras</p>
+    <h2>Quatro pareceres, os mesmos selos, profundidades diferentes.</h2>
+    <p class="lede">Artefato: <i>Extensão pós-quântica híbrida para o protocolo Matrix</i> (SBRC 2026, commit 53d46b1). Cada LLM recebeu as instruções oficiais do evento e fez duas etapas: análise do repositório e execução. Na Tarefa 8 variamos o esforço de raciocínio e a versão do modelo.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Tamanho do parecer, em palavras</h3>
+        <div class="bars">
+          <div class="bar"><span>GPT-OSS 120B · médio</span><div class="t"><i data-w="1345" data-max="6010"></i></div><b>1.345</b></div>
+          <div class="bar"><span>Gemini 3.8 Flash · baixo</span><div class="t"><i data-w="2704" data-max="6010"></i></div><b>2.704</b></div>
+          <div class="bar"><span>Gemini 3.8 Flash · alto</span><div class="t"><i data-w="4015" data-max="6010"></i></div><b>4.015</b></div>
+          <div class="bar"><span>Gemini 4 Argon · baixo</span><div class="t"><i data-w="6010" data-max="6010"></i></div><b>6.010</b></div>
+        </div>
+        <p class="src" style="color:#8A93A3">tamanho não é qualidade: é só quanto cada um escreveu</p>
+      </div>
+      <div class="card">
+        <table class="tbl">
+          <tr><th>Modelo</th><th>Selo F</th><th>Selo R</th><th>Executou?</th></tr>
+          <tr><td>GPT-OSS 120B</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td class="na">não</td></tr>
+          <tr><td>Gemini 3.8 Flash baixo</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>sim</td></tr>
+          <tr><td>Gemini 3.8 Flash alto</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>sim</td></tr>
+          <tr><td>Gemini 4 Argon baixo <span class="flag">achou erro</span></td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>sim</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card"><p class="eyebrow" style="margin-bottom:10px">O README manda procurar</p><p style="font-family:var(--mono);color:#F1F5F9;font-size:14.5px;overflow-wrap:anywhere">results/resultados_experiment_&lt;timestamp&gt;.csv</p><p class="src" style="color:#8A93A3">README.md · linha 385</p></div>
+      <div class="card"><p class="eyebrow" style="margin-bottom:10px">O código grava</p><p style="font-family:var(--mono);color:#F1F5F9;font-size:14.5px;overflow-wrap:anywhere">results/user_profile_runs_&lt;timestamp&gt;_&lt;política&gt;.csv</p><p class="src" style="color:#8A93A3">src/main.rs · linha 146</p></div>
+    </div>
+    <p style="color:#B8C0CC;margin-top:18px;max-width:800px">Só o Gemini 4 Argon notou a divergência, e ela existe: conferimos no repositório. A lição vale para qualquer parecer de IA: cada “arquivo, linha” citado precisa ser aberto e checado.</p>
+  </div>
+</section>
+
+<!-- LINHA DO TEMPO -->
+<section id="linha">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E7</span>Linha do tempo do semestre</p>
+    <h2>O combinado e o entregue.</h2>
+    <div class="tlhead"><span>data</span><span>Combinado com o professor</span><span>Entregue</span></div>
+    <div class="tl">
+      <div class="ev"><div class="d">14/09</div>
+        <div class="col off"><b>Adiado</b>Apresentar as tarefas 1 a 3 na aula seguinte (Erik em viagem).</div>
+        <div class="col off"><b>—</b>Sem apresentação.</div></div>
+      <div class="ev"><div class="d">21/09</div>
+        <div class="col"><b>Combinado</b>Fazer as tarefas 6 e 7. Na 7, registrar a versão exata de cada modelo e usar três provedores. Slides mais legíveis.</div>
+        <div class="col ok"><b>Apresentado</b>Processo do ICSA 2024, artigo do ICSE 2020, GitExpert Check e auditoria de senhas.</div></div>
+      <div class="ev"><div class="d">25/09</div>
+        <div class="col off"><b>—</b>Prazo da tarefa 6.</div>
+        <div class="col ok"><b>Entregue</b>Comparação de três processos com fluxogramas.</div></div>
+      <div class="ev"><div class="d">28/09</div>
+        <div class="col off"><b>—</b>Início da tarefa 7.</div>
+        <div class="col ok"><b>Feito</b>Artefato do SBRC 2026 escolhido, clonado e compilado.</div></div>
+      <div class="ev"><div class="d">02/11</div>
+        <div class="col off"><b>—</b>Tarefa 8: variar esforço e versão.</div>
+        <div class="col ok"><b>Feito</b>Quatro pareceres e novas execuções do teste mínimo.</div></div>
+      <div class="ev"><div class="d">próximo</div>
+        <div class="col wait"><b>Em aberto</b>Terceiro provedor, tabela T7 × T8 completa e as correções do GitExpert Check.</div>
+        <div class="col off"><b>—</b>Entra aqui quando sair.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITES -->
+<section id="limites" class="lim">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E8</span>Rigor</p>
+    <h2>O que sustentamos, e o que ainda não.</h2>
+    <div class="grid2">
+      <div class="card"><h3>Dois provedores, não três</h3><p>A tarefa 7 pede três provedores. Até agora: OpenAI (GPT-OSS) e Google (Gemini). Falta o terceiro.</p></div>
+      <div class="card"><h3>Um artefato só</h3><p>Todas as conclusões sobre as LLMs vêm de um único artefato. Um caso que não recebeu todos os selos diria mais.</p></div>
+      <div class="card"><h3>Selos oficiais não confirmados</h3><p>O README declara os selos D, F, S e R. Ainda não achamos a lista oficial de selos concedidos para comparar.</p></div>
+      <div class="card"><h3>Sem comparação externa</h3><p>O GitExpert Check ainda não foi medido contra ferramentas como gitleaks e TruffleHog.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGAS -->
+<section id="entregas">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ev-tag">E9</span>Entregas</p>
+    <h2>O dossiê completo.</h2>
+    <p class="lede">Cada tarefa da LEAS com o material original, para quem quiser conferir.</p>
+    <div class="deliv">
+      <div class="dv"><span class="dcode">T1 · ago</span><h3>Avaliação de artefatos no NFDIxCS</h3><p>O processo do ICSA 2024, do setup à decisão com selos.</p><div class="k"><a href="assets/entregas/t1-nfdixcs-icsa2024.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
+      <div class="dv"><span class="dcode">T2 · set</span><h3>Community Expectations for Research Artifacts</h3><p>ICSE 2020: o que comitês e autores esperam de um artefato.</p><div class="k"><span>apresentado em 21/09</span></div></div>
+      <div class="dv"><span class="dcode">T3 · set</span><h3>GitExpert Check</h3><p>Código, testes, README e o relato de como a IA foi usada.</p><div class="k"><a href="https://github.com/Erik-Fontella/git-exposure-check" target="_blank" rel="noopener">repositório ↗</a><a href="https://github.com/Erik-Fontella/git-exposure-check/blob/main/relato.txt" target="_blank" rel="noopener">relato ↗</a></div></div>
+      <div class="dv"><span class="stamp">entregue</span><span class="dcode">T6 · 25/09</span><h3>Três processos comparados</h3><p>NFDIxCS, USENIX e ACM, com fluxogramas e tabela.</p><div class="k"><a href="assets/entregas/t6-comparacao-processos.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
+      <div class="dv"><span class="dcode">T7 e T8 · nov</span><h3>Protocolo e pareceres das LLMs</h3><p>Configuração do experimento, prompt da etapa 1 e os quatro pareceres.</p><div class="k"><a href="assets/entregas/t8-protocolo.md" target="_blank" rel="noopener">protocolo</a><a href="assets/entregas/t8-prompt-etapa1.md" target="_blank" rel="noopener">prompt</a><a href="assets/entregas/t8-avaliacoes.zip">pareceres .zip</a></div></div>
+      <div class="dv"><span class="dcode">T8 · em aberto</span><h3>Tabela T7 × T8</h3><p>A comparação entre configurações, ainda sendo preenchida.</p><div class="k"><a href="assets/entregas/t8-tabela-t7-t8.md" target="_blank" rel="noopener">rascunho</a></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>Portfólio LEAS 2026.2</b>Laboratório de Engenharia de Artefatos de Software · Engenharia de Software · Unipampa, Alegrete. Prof. Diego Kreutz.<br><br>Os números desta página vêm dos nossos arquivos e do repositório público, conferidos em 23/11/2026.</div>
+    <div><b>Quem fez</b>Erik Fontella<br>André Medeiros</div>
+    <div><b>Links</b><a href="https://github.com/Erik-Fontella/git-exposure-check" target="_blank" rel="noopener">git-exposure-check</a><br><a href="https://liaa-erik.github.io/" target="_blank" rel="noopener">Meu projeto da LIAA (RubricPro)</a><br><a href="https://unipampa4all.github.io/disciplinas/liaa/20262/projetos_html/leas-eric-andre.html" target="_blank" rel="noopener">Página do projeto no mapa</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target;
+    if(el.classList.contains('bars')) el.querySelectorAll('i').forEach(i=>{i.style.width=(+i.dataset.w/+i.dataset.max*100)+'%';});
+    else el.classList.add('on');
+    io.unobserve(el);
+  }),{threshold:.25});
+  document.querySelectorAll('.bars,.fade-in').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
