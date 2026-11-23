@@ -1,0 +1,112 @@
+WEBVTT
+
+00:00:00.800 --> 00:00:04.680
+Todo artigo científico promete que o código funciona.
+
+00:00:04.680 --> 00:00:08.270
+Neste semestre, a gente foi conferir.
+
+00:00:08.270 --> 00:00:11.840
+E colocou inteligência artificial para conferir junto.
+
+00:00:13.244 --> 00:00:14.984
+Somos Erik Fontella e André Medeiros,
+
+00:00:14.984 --> 00:00:21.724
+e este é o nosso portfólio do Laboratório de Engenharia de Artefatos de Software, na Unipampa.
+
+00:00:23.120 --> 00:00:28.270
+Começamos pelo básico: como as conferências avaliam artefatos.
+
+00:00:28.270 --> 00:00:35.640
+No ICSA 2024, o processo passa por submissão, escolha de revisores,
+
+00:00:35.640 --> 00:00:39.550
+conversa anônima com os autores e decisão com selos.
+
+00:00:39.550 --> 00:00:45.100
+E um estudo do ICSE 2020 mostrou o problema central:
+
+00:00:45.100 --> 00:00:49.480
+revisores e autores não entendem os selos do mesmo jeito.
+
+00:00:50.878 --> 00:00:54.378
+Depois, construímos um artefato com IA.
+
+00:00:54.378 --> 00:00:58.618
+O GitExpert Check procura segredos antes do git push.
+
+00:00:58.618 --> 00:01:02.978
+Num repositório de teste, ele achou um .env comitado,
+
+00:01:02.978 --> 00:01:07.788
+uma chave privada e um banco local, em três milissegundos.
+
+00:01:07.788 --> 00:01:12.138
+A lição: pedir o projeto inteiro de uma vez deu errado.
+
+00:01:12.138 --> 00:01:15.698
+Pedir módulo por módulo gerou 32 testes.
+
+00:01:17.095 --> 00:01:21.365
+E avaliamos o nosso próprio artefato como um comitê faria.
+
+00:01:21.365 --> 00:01:25.235
+Num clone limpo, com Python 3.13, ele nem rodou:
+
+00:01:25.235 --> 00:01:28.525
+faltava uma linha de import.
+
+00:01:28.525 --> 00:01:31.925
+É exatamente o tipo de coisa que um avaliador pega.
+
+00:01:33.324 --> 00:01:36.534
+Comparamos três processos de avaliação.
+
+00:01:36.534 --> 00:01:41.074
+O da NFDI foca em preservar, o da USENIX em executar,
+
+00:01:41.074 --> 00:01:44.514
+e o da ACM em chegar a um consenso entre os avaliadores.
+
+00:01:45.918 --> 00:01:52.288
+A parte principal: oito configurações de LLM, de três provedores,
+
+00:01:52.288 --> 00:01:57.528
+avaliando um artefato real do SBRC 2026, com as regras oficiais do evento.
+
+00:01:57.528 --> 00:02:01.848
+Na Tarefa 8, 18 de 18 decisões bateram com o comitê.
+
+00:02:01.848 --> 00:02:05.308
+Mas acertar o selo não basta.
+
+00:02:05.308 --> 00:02:10.068
+O Claude Opus encontrou 11 defeitos reais no artefato.
+
+00:02:10.068 --> 00:02:12.268
+O Gemini 3.8 Flash, no máximo um.
+
+00:02:12.268 --> 00:02:18.528
+Trocar a versão do modelo pesou mais do que aumentar o esforço.
+
+00:02:18.528 --> 00:02:21.438
+E, quando o ambiente não estava limpo,
+
+00:02:21.438 --> 00:02:27.608
+o modelo apresentou como seus os resultados de uma rodada antiga.
+
+00:02:29.008 --> 00:02:34.088
+A conclusão: o veredito das LLMs é robusto,
+
+00:02:34.088 --> 00:02:36.328
+mas a avaliação que o sustenta, não.
+
+00:02:36.328 --> 00:02:42.308
+O que separa uma boa avaliação de uma ruim é a evidência:
+
+00:02:42.308 --> 00:02:44.218
+arquivo, linha e execução.
+
+00:02:44.218 --> 00:02:47.598
+Está tudo em leas-erik.github.io
