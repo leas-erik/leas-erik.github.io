@@ -1,112 +1,105 @@
 WEBVTT
 
-00:00:00.800 --> 00:00:04.680
+1
+00:00:00.000 --> 00:00:06.527
 Todo artigo científico promete que o código funciona.
 
-00:00:04.680 --> 00:00:08.270
-Neste semestre, a gente foi conferir.
+2
+00:00:06.527 --> 00:00:13.053
+As LLMs avaliam artefatos como um comitê de verdade?
 
-00:00:08.270 --> 00:00:11.840
-E colocou inteligência artificial para conferir junto.
+3
+00:00:13.053 --> 00:00:19.580
+Erik Fontella e André Medeiros · LEAS 2026.2, Unipampa.
 
-00:00:13.244 --> 00:00:14.984
-Somos Erik Fontella e André Medeiros,
+4
+00:00:20.064 --> 00:00:26.191
+Estudo do ICSE 2020 (79 chamadas, ~250 revisores): o que mais pesa é
 
-00:00:14.984 --> 00:00:21.724
-e este é o nosso portfólio do Laboratório de Engenharia de Artefatos de Software, na Unipampa.
+5
+00:00:26.191 --> 00:00:32.318
+replicabilidade (45), documentação (43), instalação (37) e código que roda (29).
 
-00:00:23.120 --> 00:00:28.270
-Começamos pelo básico: como as conferências avaliam artefatos.
+6
+00:00:32.318 --> 00:00:38.444
+Mas revisores e autores nem sempre entendem os selos do mesmo jeito.
 
-00:00:28.270 --> 00:00:35.640
-No ICSA 2024, o processo passa por submissão, escolha de revisores,
+7
+00:00:38.929 --> 00:00:46.514
+Cada conferência concentra esforço numa etapa diferente:
 
-00:00:35.640 --> 00:00:39.550
-conversa anônima com os autores e decisão com selos.
+8
+00:00:46.514 --> 00:00:54.099
+NFDIxCS / ICSA foca em preservar (FAIR) · USENIX em executar · ACM no consenso.
 
-00:00:39.550 --> 00:00:45.100
-E um estudo do ICSE 2020 mostrou o problema central:
+9
+00:00:54.583 --> 00:01:00.817
+Nosso caso prático: GitExpert Check, auditor de segredos antes do git push.
 
-00:00:45.100 --> 00:00:49.480
-revisores e autores não entendem os selos do mesmo jeito.
+10
+00:01:00.817 --> 00:01:07.050
+Acha .env comitado, chave privada e banco local em 3 ms.
 
-00:00:50.878 --> 00:00:54.378
-Depois, construímos um artefato com IA.
+11
+00:01:07.050 --> 00:01:13.283
+Pedir módulo por módulo (em vez de tudo junto) gerou 32 testes.
 
-00:00:54.378 --> 00:00:58.618
-O GitExpert Check procura segredos antes do git push.
+12
+00:01:13.768 --> 00:01:19.671
+No clone limpo (Python 3.13), nosso artefato travou: faltava 1 import (Iterable)
 
-00:00:58.618 --> 00:01:02.978
-Num repositório de teste, ele achou um .env comitado,
+13
+00:01:19.671 --> 00:01:25.574
+e os arquivos falsos de teste. Corrigido na v1.0.1 (CI em Python 3.9–3.14).
 
-00:01:02.978 --> 00:01:07.788
-uma chave privada e um banco local, em três milissegundos.
+14
+00:01:25.574 --> 00:01:31.478
+É exatamente o tipo de defeito que só aparece executando o código.
 
-00:01:07.788 --> 00:01:12.138
-A lição: pedir o projeto inteiro de uma vez deu errado.
+15
+00:01:31.962 --> 00:01:39.619
+Teste central: artefato real do SBRC 2026, avaliado por 8 configurações de LLM.
 
-00:01:12.138 --> 00:01:15.698
-Pedir módulo por módulo gerou 32 testes.
+16
+00:01:39.619 --> 00:01:47.276
+Na Tarefa 8, 18 de 18 decisões bateram com o comitê
 
-00:01:17.095 --> 00:01:21.365
-E avaliamos o nosso próprio artefato como um comitê faria.
+17
+00:01:47.276 --> 00:01:54.932
+nos selos F (Funcional) e R (Reprodutível).
 
-00:01:21.365 --> 00:01:25.235
-Num clone limpo, com Python 3.13, ele nem rodou:
+18
+00:01:55.417 --> 00:02:03.090
+Acertar o selo não basta: conferimos 17 defeitos reais no código (arquivo e linha).
 
-00:01:25.235 --> 00:01:28.525
-faltava uma linha de import.
+19
+00:02:03.090 --> 00:02:10.763
+Claude Opus achou 11 · Fable 10 · Gemini 4 Argon 9 · Gemini 3.8 Flash no máximo 1.
 
-00:01:28.525 --> 00:01:31.925
-É exatamente o tipo de coisa que um avaliador pega.
+20
+00:02:10.763 --> 00:02:18.437
+Trocar a versão (0 → 9) pesou muito mais do que aumentar o esforço.
 
-00:01:33.324 --> 00:01:36.534
-Comparamos três processos de avaliação.
+21
+00:02:18.921 --> 00:02:24.698
+Defeito real: README (L385) cita um CSV, mas main.rs (L146) grava outro nome.
 
-00:01:36.534 --> 00:01:41.074
-O da NFDI foca em preservar, o da USENIX em executar,
+22
+00:02:24.698 --> 00:02:30.474
+Ambiente reaproveitado contamina: modelos citaram arquivos de rodadas antigas.
 
-00:01:41.074 --> 00:01:44.514
-e o da ACM em chegar a um consenso entre os avaliadores.
+23
+00:02:30.474 --> 00:02:36.251
+Só no contêiner limpo a execução foi totalmente verificável.
 
-00:01:45.918 --> 00:01:52.288
-A parte principal: oito configurações de LLM, de três provedores,
+24
+00:02:36.736 --> 00:02:42.662
+O veredito das LLMs é robusto. A avaliação que o sustenta, não.
 
-00:01:52.288 --> 00:01:57.528
-avaliando um artefato real do SBRC 2026, com as regras oficiais do evento.
+25
+00:02:42.662 --> 00:02:48.589
+O que separa uma boa avaliação de uma ruim é evidência: arquivo, linha e execução.
 
-00:01:57.528 --> 00:02:01.848
-Na Tarefa 8, 18 de 18 decisões bateram com o comitê.
-
-00:02:01.848 --> 00:02:05.308
-Mas acertar o selo não basta.
-
-00:02:05.308 --> 00:02:10.068
-O Claude Opus encontrou 11 defeitos reais no artefato.
-
-00:02:10.068 --> 00:02:12.268
-O Gemini 3.8 Flash, no máximo um.
-
-00:02:12.268 --> 00:02:18.528
-Trocar a versão do modelo pesou mais do que aumentar o esforço.
-
-00:02:18.528 --> 00:02:21.438
-E, quando o ambiente não estava limpo,
-
-00:02:21.438 --> 00:02:27.608
-o modelo apresentou como seus os resultados de uma rodada antiga.
-
-00:02:29.008 --> 00:02:34.088
-A conclusão: o veredito das LLMs é robusto,
-
-00:02:34.088 --> 00:02:36.328
-mas a avaliação que o sustenta, não.
-
-00:02:36.328 --> 00:02:42.308
-O que separa uma boa avaliação de uma ruim é a evidência:
-
-00:02:42.308 --> 00:02:44.218
-arquivo, linha e execução.
-
-00:02:44.218 --> 00:02:47.598
-Está tudo em leas-erik.github.io
+26
+00:02:48.589 --> 00:02:54.516
+Dossiê completo, PDFs e terminal interativo em leas-erik.github.io.
