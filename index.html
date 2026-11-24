@@ -296,10 +296,7 @@ footer a{color:#B8C0CC}
     <div class="hero-grid">
       <div>
         <div class="video" id="video">
-          <!-- Quando o vídeo estiver pronto: troque o bloco .ph por
-               <video src="assets/leas.mp4" controls playsinline poster="assets/poster.jpg"></video>
-               ou um <iframe> do YouTube. -->
-          <video controls playsinline preload="metadata" poster="assets/leas-poster.jpg"><source src="assets/leas.mp4" type="video/mp4"><track kind="captions" src="assets/leas.pt-BR.vtt" srclang="pt-BR" label="Português"></video>
+          <video controls playsinline preload="metadata" poster="assets/leas-poster.jpg?v=20261124c"><source src="assets/leas.mp4?v=20261124c" type="video/mp4"><track kind="captions" src="assets/leas.pt-BR.vtt?v=20261124c" srclang="pt-BR" label="Português"></video>
         </div>
         <div class="btns">
           <a class="btn p" href="#gitexpert">Ver o GitExpert Check rodando</a>
@@ -484,7 +481,7 @@ footer a{color:#B8C0CC}
       </div>
       <div class="card">
         <table class="tbl">
-          <tr><th>Configuração</th><th>F</th><th>R</th><th>Execução</th></tr>
+          <tr><th>Configuração</th><th><abbr title="Selo Funcional (SBRC 2026)" style="text-decoration:underline dotted;cursor:help">F</abbr></th><th><abbr title="Selo Reprodutível (SBRC 2026)" style="text-decoration:underline dotted;cursor:help">R</abbr></th><th>Execução</th></tr>
           <tr><td>Opus 5.5 alto · T7</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>completa, Ubuntu</td></tr>
           <tr><td>Fable 5.1 médio · T8</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>completa, contêiner limpo</td></tr>
           <tr><td>Gemini 3.8 padrão · T7</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td>reduzida, Windows</td></tr>
@@ -494,6 +491,7 @@ footer a{color:#B8C0CC}
           <tr><td>GPT-5.6 Luna · T7</td><td style="color:#FFB4A8;font-weight:700">negar</td><td style="color:#FFB4A8;font-weight:700">negar</td><td class="na">sem rede</td></tr>
           <tr><td>GPT-OSS 120B médio · T8</td><td class="yes"><span class="stamp">atribuir</span></td><td class="yes"><span class="stamp">atribuir</span></td><td class="na">não tentou</td></tr>
         </table>
+        <p class="src" style="color:#9BA6B8;margin-top:14px"><b style="color:#F1F5F9">Legenda dos selos (SBRC 2026):</b> <code style="color:var(--blue-l)">F</code> = Funcional (executa sem erros críticos) · <code style="color:var(--blue-l)">R</code> = Reprodutível (resultados principais replicados). O comitê atribuiu ambos ao artefato.</p>
       </div>
     </div>
     <div class="grid3">
