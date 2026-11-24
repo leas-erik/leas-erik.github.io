@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfólio LEAS 2026.2 — Erik Fontella e André Medeiros</title>
 <meta name="description" content="Avaliação de artefatos de software na LEAS 2026.2 (Unipampa): processos de conferências, o auditor GitExpert Check gerado com IA e LLMs como avaliadoras de um artefato do SBRC 2026.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E9F8E'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='monospace' font-weight='800' font-size='18' fill='%23ffffff'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
@@ -214,12 +215,42 @@ footer a{color:#B8C0CC}
 .leas .card .eyebrow{color:var(--blue-l)}
 
 /* identidade: selo de avaliação */
-.seal{position:absolute;right:4%;top:56px;width:250px;height:250px;opacity:.9;pointer-events:none}
+.hero h1{max-width:min(820px,calc(100% - 250px))}
+.seal{position:absolute;right:2.5%;top:44px;width:210px;height:210px;opacity:.76;pointer-events:none}
 .seal .ring{transform-origin:125px 125px;animation:spin 40s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero .wrap{position:relative;z-index:1}
 .ev-tag{display:inline-grid;place-items:center;min-width:34px;height:22px;border:1.5px solid currentColor;border-radius:6px;margin-right:10px;font:700 11.5px var(--mono);transform:rotate(-4deg)}
 .stamp{display:inline-block;font:800 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:2px solid currentColor;border-radius:6px;padding:2px 8px;transform:rotate(-3deg)}
+.card .code{white-space:pre-wrap;word-break:break-word;font-size:12.5px}
+.steps .step-pair{display:inline-flex;align-items:center;gap:8px}
+
+/* simulador interativo do terminal GitExpert */
+.term-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--nightline);background:#121318}
+.term-head .bar2{padding:0;border:0;align-items:center}
+.term-head .title{font:600 12px var(--mono);color:#8A93A3;margin-left:8px}
+.sim-ctrls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--nightline);background:#101116}
+.sim-chip{appearance:none;background:#1B1D24;border:1.5px solid #2E3240;color:#C8D0DC;border-radius:999px;padding:5px 12px;font:600 12.5px var(--mono);cursor:pointer;transition:all .15s}
+.sim-chip:hover{border-color:var(--blue-l);color:#fff}
+.sim-chip.on{background:rgba(255,138,128,.14);border-color:#FF8A80;color:#FFD0CC}
+.sim-chip.safe.on{background:rgba(45,212,191,.14);border-color:var(--blue-l);color:#CCF5EE}
+.sim-fix{appearance:none;margin-left:auto;background:var(--blue);border:1.5px solid var(--blue);color:#fff;border-radius:999px;padding:6px 14px;font:700 12.5px 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer;transition:all .15s}
+.sim-fix:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.sim-fix.fixed{background:#193A34;border-color:var(--blue-l);color:var(--blue-l)}
+
+/* zoom nos fluxogramas T6 + lightbox */
+.figs figure{cursor:zoom-in;transition:transform .16s,box-shadow .16s;position:relative}
+.figs figure:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(15,23,42,.12)}
+.figs figcaption{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.figs figcaption i{font:700 11.5px var(--mono);font-style:normal;color:var(--blue-d)}
+#lb{position:fixed;inset:0;z-index:100;background:rgba(10,12,16,.92);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px}
+#lb.on{display:flex}
+#lb figure{margin:0;max-width:1280px;width:100%;display:flex;flex-direction:column;gap:12px}
+#lb .lb-wrap{background:#fff;border-radius:14px;padding:12px;max-height:82vh;overflow:auto;display:flex;justify-content:center}
+#lb img{max-width:100%;height:auto;border-radius:8px}
+#lb figcaption{display:flex;justify-content:space-between;align-items:center;color:#E2E8F0;font-size:14.5px;gap:16px}
+#lb button{appearance:none;background:#1B2424;border:1px solid #2DD4BF;color:#CCF5EE;border-radius:10px;padding:7px 14px;font:700 13px var(--mono);cursor:pointer}
+
 /* entregas */
 .deliv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
 .dv{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative}
@@ -230,7 +261,8 @@ footer a{color:#B8C0CC}
 .dv .k a,.dv .k span{font:700 12.5px var(--mono);text-decoration:none;border-radius:8px;padding:6px 10px;background:#E3F4F1;color:var(--blue-d)}
 .dv .k span{background:#EFECE3;color:var(--soft)}
 .dv .stamp{position:absolute;right:16px;top:16px;color:var(--blue-d);opacity:.85}
-@media (max-width:900px){.seal{display:none}.deliv{grid-template-columns:1fr}.leas .card{overflow-x:auto}.tbl .stamp{font-size:10px;padding:1px 5px;letter-spacing:.02em}}
+@media (max-width:1080px){.seal{display:none}.hero h1{max-width:900px}}
+@media (max-width:900px){.deliv{grid-template-columns:1fr}.leas .card{overflow-x:auto}.tbl .stamp{font-size:10px;padding:1px 5px;letter-spacing:.02em}.sim-fix{margin-left:0}}
 @media (prefers-reduced-motion:reduce){.seal .ring{animation:none}}
 </style>
 </head>
@@ -337,9 +369,18 @@ footer a{color:#B8C0CC}
     <p class="eyebrow"><span class="ev-tag">E3</span>Tarefa 3 · criar um artefato de segurança com IA</p>
     <h2>GitExpert Check: acha o segredo antes do <code style="font-size:.8em">git push</code>.</h2>
     <p class="lede">Um repositório falso com um <code>.env</code> comitado, uma chave privada e um banco local fora do <code>.gitignore</code>. A ferramenta acha os três em 3 ms e diz o que fazer.</p>
-    <div class="term" aria-label="Saída do terminal do git-exposure-check">
-      <div class="bar2"><i></i><i></i><i></i></div>
-<pre><span class="m">$</span> python main.py demo_repo
+    <div class="term" aria-label="Simulador interativo do terminal do git-exposure-check">
+      <div class="term-head">
+        <div class="bar2"><i></i><i></i><i></i><span class="title">git-exposure-check · simulador interativo</span></div>
+      </div>
+      <div class="sim-ctrls" role="group" aria-label="Arquivos no repositório de teste">
+        <button class="sim-chip on" type="button" data-file="env">● .env (rastreado)</button>
+        <button class="sim-chip on" type="button" data-file="key">● server.key</button>
+        <button class="sim-chip on" type="button" data-file="db">● app.sqlite3</button>
+        <button class="sim-chip safe on" type="button" data-file="example">✓ .env.example (seguro)</button>
+        <button class="sim-fix" type="button" id="sim-fix">Aplicar .gitignore recomendado</button>
+      </div>
+<pre id="term-out" aria-live="polite"><span class="m">$</span> python main.py demo_repo
 <span class="m">Arquivos varridos: 7 · Regras aplicadas: 7 · Tempo de varredura: 3.23 ms</span>
 
 <span class="r">1. [CRÍTICO - RASTREADO NO GIT] .env</span>
@@ -401,15 +442,15 @@ footer a{color:#B8C0CC}
     <p class="lede">Os três processos aceitam o mesmo tipo de artefato, mas cada um gasta o esforço numa etapa diferente (em destaque).</p>
     <div class="proc light">
       <div class="p"><h3>NFDIxCS / ICSA · foco em preservação</h3><div class="steps"><span>Submissão + metadados CFF</span><em>→</em><span class="hl">Auditoria FAIR</span><em>→</em><span>Containers OCI</span><em>→</em><span>Validação dos resultados</span><em>→</em><span class="hl">Arquivamento federado</span><em>→</em><span>Certificado FAIR</span></div></div>
-      <div class="p"><h3>USENIX · foco em execução</h3><div class="steps"><span>Paper + apêndice AE</span><em>→</em><span class="hl">Provisionamento (testbed)</span><em>→</em><span>Smoke test</span><em>→</em><span class="hl">Loop com autores (HotCRP)</span><em>→</em><span>Benchmarks completos</span><em>→</em><span>Badges + selo no PDF</span></div></div>
-      <div class="p"><h3>ACM · foco no consenso</h3><div class="steps"><span>Pacote do artefato</span><em>→</em><span>Kick-the-tires</span><em>→</em><span>Ajustes com autores</span><em>→</em><span class="hl">Avaliação holística</span><em>→</em><span class="hl">Consenso do comitê</span><em>→</em><span>Badges ACM</span></div></div>
+      <div class="p"><h3>USENIX · foco em execução</h3><div class="steps"><span>Paper + apêndice AE</span><span class="step-pair"><em>→</em><span class="hl">Provisionamento (testbed)</span></span><span class="step-pair"><em>→</em><span>Smoke test</span></span><span class="step-pair"><em>→</em><span class="hl">Loop com autores (HotCRP)</span></span><span class="step-pair"><em>→</em><span>Benchmarks completos</span></span><span class="step-pair"><em>→</em><span>Badges + selo no PDF</span></span></div></div>
+      <div class="p"><h3>ACM · foco no consenso</h3><div class="steps"><span>Pacote do artefato</span><span class="step-pair"><em>→</em><span>Kick-the-tires</span></span><span class="step-pair"><em>→</em><span>Ajustes com autores</span></span><span class="step-pair"><em>→</em><span class="hl">Avaliação holística</span></span><span class="step-pair"><em>→</em><span class="hl">Consenso do comitê</span></span><span class="step-pair"><em>→</em><span>Badges ACM</span></span></div></div>
     </div>
     <details>
-      <summary>Ver os fluxogramas originais</summary>
+      <summary>Ver os fluxogramas originais (clique em qualquer um para ampliar)</summary>
       <div class="in"><div class="figs">
-        <figure><figcaption>NFDIxCS / ICSA</figcaption><img src="assets/t6-nfdixcs.webp" alt="Fluxograma do processo NFDIxCS/ICSA" loading="lazy"></figure>
-        <figure><figcaption>USENIX</figcaption><img src="assets/t6-usenix.webp" alt="Fluxograma do processo USENIX" loading="lazy"></figure>
-        <figure><figcaption>ACM (avaliação holística)</figcaption><img src="assets/t6-holistica.webp" alt="Fluxograma do processo ACM com fase holística" loading="lazy"></figure>
+        <figure data-lb="assets/t6-nfdixcs.webp" data-lb-cap="Fluxograma do processo NFDIxCS / ICSA (foco em preservação FAIR)"><figcaption><span>NFDIxCS / ICSA</span><i>⤢ Ampliar</i></figcaption><img src="assets/t6-nfdixcs.webp" alt="Fluxograma do processo NFDIxCS/ICSA" loading="lazy"></figure>
+        <figure data-lb="assets/t6-usenix.webp" data-lb-cap="Fluxograma do processo USENIX (foco em execução e benchmarks)"><figcaption><span>USENIX</span><i>⤢ Ampliar</i></figcaption><img src="assets/t6-usenix.webp" alt="Fluxograma do processo USENIX" loading="lazy"></figure>
+        <figure data-lb="assets/t6-holistica.webp" data-lb-cap="Fluxograma do processo ACM com avaliação holística e consenso"><figcaption><span>ACM (holística)</span><i>⤢ Ampliar</i></figcaption><img src="assets/t6-holistica.webp" alt="Fluxograma do processo ACM com fase holística" loading="lazy"></figure>
       </div></div>
     </details>
   </div>
@@ -525,6 +566,13 @@ footer a{color:#B8C0CC}
   </div>
 </section>
 
+<div id="lb" role="dialog" aria-modal="true" aria-label="Fluxograma ampliado">
+  <figure>
+    <div class="lb-wrap"><img id="lb-img" src="" alt=""></div>
+    <figcaption><span id="lb-cap"></span><button type="button" id="lb-close">Fechar (Esc)</button></figcaption>
+  </figure>
+</div>
+
 <footer>
   <div class="wrap">
     <div><b>Portfólio LEAS 2026.2</b>Laboratório de Engenharia de Artefatos de Software · Engenharia de Software · Unipampa, Alegrete. Prof. Diego Kreutz.<br><br>Os números desta página vêm dos nossos arquivos e do repositório público, conferidos em 23/11/2026.</div>
@@ -543,6 +591,62 @@ footer a{color:#B8C0CC}
     io.unobserve(el);
   }),{threshold:.25});
   document.querySelectorAll('.bars,.fade-in').forEach(el=>io.observe(el));
+
+  // Lightbox para fluxogramas T6
+  const lb=document.getElementById('lb'), lbImg=document.getElementById('lb-img'), lbCap=document.getElementById('lb-cap');
+  function openLB(src,cap){ lbImg.src=src; lbImg.alt=cap||''; lbCap.textContent=cap||''; lb.classList.add('on'); document.body.style.overflow='hidden'; }
+  function closeLB(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+  document.getElementById('lb-close').addEventListener('click', closeLB);
+  lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape'&&lb.classList.contains('on')) closeLB(); });
+  document.querySelectorAll('[data-lb]').forEach(n=>n.addEventListener('click', ()=>openLB(n.dataset.lb, n.dataset.lbCap)));
+
+  // Simulador interativo do GitExpert Check
+  const state={env:true,key:true,db:true,example:true,fixed:false};
+  const out=document.getElementById('term-out'), fixBtn=document.getElementById('sim-fix');
+  function renderTerm(){
+    const baseFiles=3; // main.py, README.md, .gitignore
+    const total=baseFiles+(state.env?1:0)+(state.key?1:0)+(state.db?1:0)+(state.example?1:0);
+    const ms=(2.1+total*0.16).toFixed(2);
+    const lines=[`<span class="m">$</span> python main.py demo_repo`];
+    lines.push(`<span class="m">Arquivos varridos: ${total} · Regras aplicadas: 7 · Tempo de varredura: ${ms} ms</span>\n`);
+    let tracked=0, exposed=0, prot=0, idx=1;
+    if(state.env){
+      if(state.fixed){ prot++; }
+      else { tracked++; lines.push(`<span class="r">${idx++}. [CRÍTICO - RASTREADO NO GIT] .env</span>\n   Ação: <span class="b">git rm --cached .env</span>, adicione .env ao .gitignore e revogue as credenciais.`); }
+    }
+    if(state.key){
+      if(state.fixed){ prot++; }
+      else { exposed++; lines.push(`<span class="y">${idx++}. [ALERTA - NÃO IGNORADO] server.key</span>\n   Ação: adicione a regra <span class="b">*.key</span> ao .gitignore.`); }
+    }
+    if(state.db){
+      if(state.fixed){ prot++; }
+      else { exposed++; lines.push(`<span class="y">${idx++}. [ALERTA - NÃO IGNORADO] app.sqlite3</span>\n   Ação: adicione a regra <span class="b">*.sqlite3</span> ao .gitignore.`); }
+    }
+    if(state.example){
+      lines.push(`<span class="g">✓ [EXCEÇÃO SEGURA] .env.example</span> — permitido pela regra de modelo público.`);
+    }
+    const issues=tracked+exposed;
+    lines.push(`\n<span class="m">Rastreados no Git: ${tracked} · Expostos no disco: ${exposed} · Protegidos pelo .gitignore: ${prot}</span>`);
+    if(issues>0){
+      lines.push(`<span class="r">[FALHA] Foram encontrados ${issues} arquivo(s) sensíveis expostos ou rastreados!</span>`);
+    } else {
+      lines.push(`<span class="g">[OK] Nenhum arquivo sensível exposto. Repositório liberado para git push!</span>`);
+    }
+    out.innerHTML=lines.join('\n');
+    fixBtn.classList.toggle('fixed', state.fixed);
+    fixBtn.textContent=state.fixed?'↺ Voltar cenário vulnerável':'Aplicar .gitignore recomendado';
+  }
+  document.querySelectorAll('.sim-chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const k=btn.dataset.file;
+      state[k]=!state[k];
+      btn.classList.toggle('on', state[k]);
+      renderTerm();
+    });
+  });
+  fixBtn.addEventListener('click', ()=>{ state.fixed=!state.fixed; renderTerm(); });
+  renderTerm();
 })();
 </script>
 </body>
